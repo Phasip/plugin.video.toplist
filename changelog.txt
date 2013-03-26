@@ -1,0 +1,2 @@
+0.1
+	Ripped parts of init from script.xbmc.subtitles v3.9.6
