@@ -122,7 +122,9 @@ plugin = load_from_file(pluginName);
 movielistCommand='{"jsonrpc": "2.0", "method": "VideoLibrary.GetMovies","params" : { "properties" : ["title", "genre", "year", "rating", "director", "trailer", "tagline", "plot", "plotoutline", "originaltitle", "lastplayed", "playcount", "writer", "studio", "mpaa", "cast", "country", "imdbnumber", "runtime", "set", "showlink", "streamdetails", "top250", "votes", "fanart", "thumbnail", "file", "sorttitle", "resume", "setid", "dateadded", "tag", "art"], "sort": { "order":"ascending"} }, "id": 1}';
 result = xbmc.executeJSONRPC( movielistCommand )
 json = json.loads(result)
-movieList = convert(json['result']['movies'])
+movieList = []
+if 'result' in json and 'movies' in json['result']:
+	movieList = convert(json['result']['movies'])
 
 idmap = {}
 for movie in movieList:
